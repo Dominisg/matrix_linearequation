@@ -67,9 +67,9 @@ class EquationSolver:
 
         for k in range(self.N-1):
             for j in range(k+1,self.N):
-                L.data[j][k] = U.data[j][k]/U.data[k][k]
+                val = L.data[j][k] = U.data[j][k]/U.data[k][k]
                 for i in range(k,self.N):
-                    U.data[j][i] = U.data[j][i] - L.data[j][k]*U.data[k][i]
+                    U.data[j][i] = U.data[j][i] - val*U.data[k][i]
 
         y = U*self.x
 
@@ -109,10 +109,10 @@ if __name__ == '__main__':
 
 
     ##############################zadanie A############################################
-    solver_j = EquationSolver(905,Matrix.fillDiagonal(905,6,-1,-1),Matrix.fillbSin(905))
+    solver_j = EquationSolver(967,Matrix.fillDiagonal(967,6,-1,-1),Matrix.fillbSin(967))
     solver_j.solveJacobi()
     
-    solver_g = EquationSolver(905,Matrix.fillDiagonal(905,6,-1,-1),Matrix.fillbSin(905))
+    solver_g = EquationSolver(967,Matrix.fillDiagonal(967,6,-1,-1),Matrix.fillbSin(967))
     solver_g.solveGauss()
     #############################zadanie B#############################################
     solver_j = EquationSolver(967,Matrix.fillDiagonal(967,3.0,-1.0,-1.0),Matrix.fillbSin(967))
